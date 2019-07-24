@@ -1,14 +1,10 @@
 const intersection = require('lodash.intersection')
-const { user, room} = require('../config/slackRelated')
+const { user } = require('../config/slackRelated')
 
 module.exports = (jarvis) => {
-
-
   jarvis.listenerMiddleware((context, next, done) => {
     const { id, auth, role } = context.listener.options
     reqUser = context.response.message.user
-    reqRoom = context.response.message.room
-    reqMsg = context.response.message.text
 
     if(!auth) {
       next()

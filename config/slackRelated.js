@@ -1,4 +1,7 @@
 module.exports = {
+  jarvis: {
+    id: 'UL78VEHQ9'
+  },
   user: {
     UBGFG6T8Q: {
       username: 'Robin',
@@ -10,7 +13,12 @@ module.exports = {
     CGC3K90KA: {
       type: 'channel',
       name: 'zzz-airboard-ng',
-      role: 'admin'
+      role: ['admin']
+    },
+    DLF39NTE0: {
+      type: 'private',
+      name: 'ForRobinPrivateRoom',
+      role: ['admin']
     }
   }
 }
