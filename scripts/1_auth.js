@@ -3,11 +3,13 @@ const { user } = require('../config/slackRelated')
 
 module.exports = (jarvis) => {
   jarvis.listenerMiddleware((context, next, done) => {
+    console.log('Middleware in: auth')
     const { id, auth, role } = context.listener.options
     reqUser = context.response.message.user
 
     if(!auth) {
       next()
+      console.log('Middleware out: auth')
       return
     }
 
@@ -16,10 +18,12 @@ module.exports = (jarvis) => {
 
     if(hasPermission) {
       next()
+      console.log('Middleware out: auth')
       return
     }
 
     context.response.reply(`You are not authorized to do this operation<${id}>`)
+    console.log('Middleware out: auth')
     done()
   })
 }

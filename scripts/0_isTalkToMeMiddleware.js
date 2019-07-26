@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { jarvis, room } = require('../config/slackRelated')
 
 module.exports = (jarvis) => {
@@ -6,17 +7,20 @@ module.exports = (jarvis) => {
     reqRoom = context.response.message.room
     reqMsg = context.response.message.rawMessage.text
 
-    console.log(reqMsg)
+    console.log('Middleware In: isTalkToMe')
     if(isPrivateRoom(reqRoom)) {
       next()
+      console.log('Middleware out: isTalkToMe')
       return
     }
 
     if(isTalkToMeInChannel(reqMsg)) {
       next()
+      console.log('Middleware out: isTalkToMe')
       return
     }
     console.log(`Not talk to me: ${reqMsg}`)
+    console.log('Middleware out: isTalkToMe')
     done()
   })
 }
